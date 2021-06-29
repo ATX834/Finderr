@@ -3,8 +3,7 @@ import ReactDom from 'react-dom';
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link
+    Route
 } from "react-router-dom";
 
 import UserContextProvider from './components/UserContextProvider';
@@ -14,32 +13,14 @@ import Users from "./components/Users"
 import Categories from './components/Categories';
 import Languages from './components/Languages';
 import HourlyRate from './components/HourlyRate';
+import Navbar from './components/Navbar';
 
 class App extends Component {
     render() {
         return (
             <Router>
                 <UserContextProvider>
-                    <nav>
-                        <ul>
-                            <li>
-                                <Link to="/">Home</Link>
-                            </li>
-                            <li>
-                                <Link to="/about">About</Link>
-                            </li>
-                            <li>
-                                <Link to="/categories">categories</Link>
-                            </li>
-                            <li>
-                                <Link to="/languages">Languages</Link>
-                            </li>
-                            <li>
-                                <Link to="/hourly-rate">Hourly-rate</Link>
-                            </li>
-                        </ul>
-                    </nav>
-
+                    <Navbar />
                     <Switch>
                         <Route path="/about">
                             <About />
