@@ -16,7 +16,11 @@ export default (Users) => {
   };
 
   const handleSubmit = () => {
-    axios.get(`/api/user?language=${userLanguage}&hourlyRate=${userHourlyRate}&category=${userCategories}`).then((r)=> r.config.data);
+      axios
+        .get(
+          `/api/user?language=${userLanguage}&hourlyRate=${userHourlyRate}&category=${userCategories}`
+        )
+        .then((r) => r.config.data);
   };
   return (
     <>
@@ -41,7 +45,7 @@ export default (Users) => {
           </li>
         )}
       </ul>
-      <button onClick = {()=> handleSubmit()}>submit</button>
+      {userCategories && userHourlyRate && userLanguage && <button onClick={() => handleSubmit()}>submit</button>}
     </>
   );
 };
