@@ -1,38 +1,51 @@
+import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../context/UserContext";
 
 export default (Users) => {
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const { userId, setUserId } = useContext(UserContext);
-
-  const fetchUsers = async () => {
-    const response = await fetch("/api/user");
-    const jsonData = await response.json();
-    setUsers(jsonData);
-    setLoading(false);
+  const {
+    userLanguage,
+    userHourlyRate,
+    userCategories,
+    setUserLanguage,
+    setUserHourlyRate,
+    setUserCategories,
+  } = useContext(UserContext);
+  const handleClick = (setter) => {
+    setter(null);
   };
-  useEffect(() => {
-    fetchUsers();
-  }, []);
 
-  if (loading) {
-    return <p>Chargement des utilisateurs ...</p>;
-  }
-
+  const handleSubmit = () => {
+      axios
+        .get(
+          `/api/user?language=${userLanguage}&hourlyRate=${userHourlyRate}&category=${userCategories}`
+        )
+        .then((r) => r.config.data);
+  };
   return (
     <>
-      <h1>Users</h1>
-
-      <p>hello ! </p>
-
+      <h4>selection</h4>
       <ul>
-        {users.map((user) => (
+        {userLanguage && (
           <li>
-            {user.firstname} {user.lastname}, {user.age}
+            Language selected : {userLanguage}{" "}
+            <button onClick={() => handleClick(setUserLanguage)}>X</button>
           </li>
-        ))}
+        )}
+        {userHourlyRate && (
+          <li>
+            Hourly Rate selected : {userHourlyRate}{" "}
+            <button onClick={() => handleClick(setUserHourlyRate)}>X</button>
+          </li>
+        )}
+        {userCategories && (
+          <li>
+            Category selected : {userCategories}{" "}
+            <button onClick={() => handleClick(setUserCategories)}>X</button>
+          </li>
+        )}
       </ul>
+      {userCategories && userHourlyRate && userLanguage && <button onClick={() => handleSubmit()}>submit</button>}
     </>
   );
 };
