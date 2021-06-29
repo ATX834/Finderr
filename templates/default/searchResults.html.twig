@@ -1,10 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} REACT / Symfony{% endblock %}
+{% block title %}
+	REACT / Symfony
+{% endblock %}
 
 {% block body %}
-    <div>
-    hey c'est ici le contenu de index.html.twig
-        <div id="root"></div>
-    </div>
+	<div>
+		<div class="container">
+			<div class="row">
+				{% for user in users|slice(0, 28)%}
+					{% set picture = random(pictures)%}
+					<div class="col-3 mx-auto m-3">
+						<div class="card col-3" style="width: 18rem;">
+							<img src={{picture}} class="card-img-top" style='max-height:180px; min-height:180px' alt="...">
+							<div class="card-body">
+								<h6 class="card-title">{{ user.firstname }}
+									{{ user.lastname }}</h6>
+								<p class="mb-2">
+									<span class="badge bg-primary text-truncate" style='max-width:116px'>{{user.mainCategory}}</span><br>
+									<span class="badge bg-secondary text-truncate">{{user.subCategory}}</span>
+								</p>
+								<p style="font-size:16px; vertical-align: middle;">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill text-warning pb-1" viewbox="0 0 16 16">
+										<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+									</svg>
+									<span class="text-warning">
+										{{ random(2,5) }}
+									</span>
+								</p>
+							</div>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item">An item</li>
+							</ul>
+						</div>
+					</div>
+
+				{% endfor %}
+			</div>
+		</div>
+	</div>
 {% endblock %}
