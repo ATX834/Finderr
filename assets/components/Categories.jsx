@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "../styles/app.css";
 
 export default function Categories() {
   const [categories, setCategories] = useState();
@@ -17,14 +18,14 @@ export default function Categories() {
   }, []);
 
   return (
-    <>
-      <h1>Categories</h1>
+    <div className="cat-container">
+      <h1 className="cat-title">Categories</h1>
       {categories && (
-        <ul>
+        <ul className="cat-list-container">
           {categories[0] &&
             categories[0].map((e) => (
-              <li>
-                <button onClick={() => setUnderCategory(e)}>{e}</button>
+              <li className="cat-li">
+                <button className="cat-button" onClick={() => setUnderCategory(e)}>{e}</button>
               </li>
             ))}
         </ul>
@@ -39,6 +40,6 @@ export default function Categories() {
           </ul>
         </>
       )}
-    </>
+    </div>
   );
 }
