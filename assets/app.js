@@ -13,6 +13,7 @@ import Home from "./components/Home"
 import Users from "./components/Users"
 import Categories from './components/Categories';
 import Languages from './components/Languages';
+import HourlyRate from './components/HourlyRate';
 
 class App extends Component {
     render() {
@@ -33,6 +34,9 @@ class App extends Component {
                             <li>
                                 <Link to="/languages">Languages</Link>
                             </li>
+                            <li>
+                                <Link to="/hourly-rate">Hourly-rate</Link>
+                            </li>
                         </ul>
                     </nav>
 
@@ -48,6 +52,9 @@ class App extends Component {
                         </Route>
                         <Route path="/languages">
                             <Languages />
+                        </Route>
+                        <Route path="/hourly-rate">
+                            <HourlyRate />
                         </Route>
                         <Route path="/">
                             <Home />
