@@ -19,15 +19,16 @@ body {
   }
 
   .cat-button {
-      padding: 10px;
-      height: 10em;
-      width: 15em;
-      font-size: 1.3em;
-      border-radius: 10px;
-      background-color: #F1F1F1;
-      border-color: #1dbf73;
-      border-style: double;
-      color:#3F3F3F;
+    padding: 10px;
+    height: 10em;
+    width: 15em;
+    font-size: 1.3em;
+    border-radius: 10px;
+    background-color: #1dbf73;
+    border-color: #1dbf73;
+    border-style: double;
+    color: white;
+    opacity: 0.9;
   }
 
   .cat-li {
