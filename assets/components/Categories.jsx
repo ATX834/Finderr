@@ -26,6 +26,7 @@ export default function Categories() {
     <div className="cat-container">
       <h1 className="cat-title">Categories</h1>
       {categories && (
+        !underCategory &&
         <ul className="cat-list-container">
           {categories[0] &&
             categories[0].map((e) => (
@@ -37,7 +38,7 @@ export default function Categories() {
       )}
       {underCategory && (
         <>
-          <h3>{underCategory}</h3>
+          <h3>{underCategory}</h3><button onClick={()=> setUnderCategory(null)}>RESETARASS</button>
           <ul>
             {categories[1][underCategory].map((e) => (
               <li><button onClick={()=>handleClick(e)}>{e}</button></li>
