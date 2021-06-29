@@ -1,11 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/app.css";
+import UserContext from "../context/UserContext";
 
 export default function Categories() {
   const [categories, setCategories] = useState();
   const [underCategory, setUnderCategory] = useState();
+  const {userCategories, setUserCategories} = useContext(UserContext);
 
+  const handleClick = (e)=>{
+    setUserCategories(e);
+  }
   const fetchCategories = () => {
     axios
       .get("/api/category")
@@ -35,7 +40,7 @@ export default function Categories() {
           <h3>{underCategory}</h3>
           <ul>
             {categories[1][underCategory].map((e) => (
-              <li>{e}</li>
+              <li><button onClick={()=>handleClick(e)}>{e}</button></li>
             ))}
           </ul>
         </>

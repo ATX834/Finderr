@@ -20,10 +20,11 @@ class ApiController extends AbstractController
      */
     // Envoi des données entrées par utilisateur
     //  et traitement pour renvoyer sur l'appli
-    // public function user(UserRepository $userRepository): Response
-    // {
-    //     return $this->json($userRepository->findThanksToSurvey($array));
-    // }
+    public function user(UserRepository $userRepository): Response
+    {
+        dd($_REQUEST);
+        return $this->json($userRepository->findThanksToSurvey($array));
+    }
 
     /**
      * @Route("/category", name="category", methods={"GET"})
