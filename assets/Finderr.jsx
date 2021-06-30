@@ -22,6 +22,7 @@ const Finderr = () => {
   };
   return (
     <>
+     <div>
       {!userCredentials && (
         <Router>
           <Navbar />
@@ -43,7 +44,9 @@ const Finderr = () => {
             </Route>
           </Switch>
         </Router>
+     
       )}
+    </div>
       {userCredentials && (
         <>
           <button onClick={handleDestroyCredentials}>Abort</button>

@@ -38,12 +38,15 @@ export default function Categories() {
       )}
       {underCategory && (
         <>
+          <div className="sub-cat-align">
           <h3>{underCategory}</h3><button className="tarass" onClick={()=> setUnderCategory(null)}>back</button>
+         </div>
           <ul className="cat-list-container">
             {categories[1][underCategory].map((e) => (
               <li className="cat-li"><button className="subcat-button" onClick={()=>handleClick(e)}>{e}</button></li>
             ))}
           </ul>
+          
         </>
       )}
     </div>
