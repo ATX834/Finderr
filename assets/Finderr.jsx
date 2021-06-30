@@ -49,10 +49,10 @@ const Finderr = () => {
     </div>
       {userCredentials && (
         <>
-          <button onClick={handleDestroyCredentials}>Abort</button>
           {searchResults && (
             <div dangerouslySetInnerHTML={{ __html: searchResults }} />
-          )}
+            )}
+            <button className='btn-danger' onClick={handleDestroyCredentials}>Back</button>
         </>
       )}
     </>
