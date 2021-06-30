@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Services\UserData;
+use App\Services\PicturesGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -57,6 +58,18 @@ class ApiController extends AbstractController
         //retourner les taux horaires des freelancers
         return $this->json([
             $userData->hourlyRate,
+        ]);
+    }
+
+    /**
+     * @Route("/search", name="search",)
+     */
+    public function search(UserRepository $userRepository, PicturesGenerator $picturesGenerator ): Response
+    {
+        $users = $userRepository->findAll();
+        return $this->render('default/searchResults.html.twig', [
+            'users' => $users,
+            'pictures' => $picturesGenerator->generateRandomImg()
         ]);
     }
 }
