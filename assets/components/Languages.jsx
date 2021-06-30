@@ -23,9 +23,9 @@ export default function Languages() {
 
   return (
     <>
-      <h1>Languages</h1>
+      <h1 className="cat-title">Languages</h1>
       {languages && (
-        <ul>{languages[0] && languages[0].map((e) => <li><button onClick={()=>handleClick(e)}>{e}</button></li>)}</ul>
+        <ul className="cat-list-container">{languages[0] && languages[0].map((e) => <li className="cat-li"><button className="cat-button" onClick={()=>handleClick(e)}>{e}</button></li>)}</ul>
       )}
     </>
   );

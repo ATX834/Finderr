@@ -29,23 +29,23 @@ export default (Users) => {
         {userLanguage && (
           <li>
             Language selected : {userLanguage}{" "}
-            <button onClick={() => handleClick(setUserLanguage)}>X</button>
+            <button className="lilcross" onClick={() => handleClick(setUserLanguage)}>X</button>
           </li>
         )}
         {userHourlyRate && (
           <li>
             Hourly Rate selected : {userHourlyRate}{" "}
-            <button onClick={() => handleClick(setUserHourlyRate)}>X</button>
+            <button className="lilcross" onClick={() => handleClick(setUserHourlyRate)}>X</button>
           </li>
         )}
         {userCategories && (
           <li>
             Category selected : {userCategories}{" "}
-            <button onClick={() => handleClick(setUserCategories)}>X</button>
+            <button className="lilcross" onClick={() => handleClick(setUserCategories)}>X</button>
           </li>
         )}
       </ul>
-      {userCategories && userHourlyRate && userLanguage && <button onClick={() => handleSubmit()}>submit</button>}
+      {userCategories && userHourlyRate && userLanguage && <button className="subsub" onClick={() => handleSubmit()}>submit</button>}
     </>
   );
 };

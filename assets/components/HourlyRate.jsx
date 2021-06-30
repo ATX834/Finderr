@@ -17,10 +17,10 @@ export default function HourlyRate(){
   },[])
   return (
     <>
-    <h1>Hourly Rates</h1>
+    <h1 className="cat-title">Hourly Rates</h1>
     {prices && (
-      <ul>
-        {prices[0] && prices[0].map((e)=><li><button onClick={()=>handleClick(e)}>{e}</button></li>)}    
+      <ul className="cat-list-container">
+        {prices[0] && prices[0].map((e)=><li className="cat-li"><button className="cat-button" onClick={()=>handleClick(e)}>{e}</button></li>)}    
       </ul>
     )
     }</>
