@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext} from "react";
 import UserContext from "../context/UserContext";
 
 export default (Users) => {
@@ -7,15 +7,18 @@ export default (Users) => {
     userLanguage,
     userHourlyRate,
     userCategories,
+    userCredentials,
     setUserLanguage,
     setUserHourlyRate,
     setUserCategories,
+    setUserCredentials
   } = useContext(UserContext);
   const handleClick = (setter) => {
     setter(null);
   };
 
   const handleSubmit = () => {
+    setUserCredentials(true);
       axios
         .get(
           `/api/user?language=${userLanguage}&hourlyRate=${userHourlyRate}&category=${userCategories}`
