@@ -10,38 +10,48 @@ import Navbar from "./components/Navbar";
 import UserContext from "./context/UserContext";
 
 const Finderr = () => {
-  const {userCredentials, setUserCredentials} = useContext(UserContext);
-  const handleDestroyCredentials = () =>{
+  const {
+    userCredentials,
+    setUserCredentials,
+    searchResults,
+    setSearchResults,
+  } = useContext(UserContext);
+  const handleDestroyCredentials = () => {
     setUserCredentials(false);
-  }
+    setSearchResults();
+  };
   return (
     <>
- {!userCredentials && 
-      <Router>
-        <Navbar />
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/categories">
-            <Categories />
-          </Route>
-          <Route path="/languages">
-            <Languages />
-          </Route>
-          <Route path="/hourly-rate">
-            <HourlyRate />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </Router>
-}
-{userCredentials && 
-  <>
-  <p>Vous avez fait votre choix ?</p><button onClick={handleDestroyCredentials}>Annuler</button></>
-}
+      {!userCredentials && (
+        <Router>
+          <Navbar />
+          <Switch>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/categories">
+              <Categories />
+            </Route>
+            <Route path="/languages">
+              <Languages />
+            </Route>
+            <Route path="/hourly-rate">
+              <HourlyRate />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </Router>
+      )}
+      {userCredentials && (
+        <>
+          <button onClick={handleDestroyCredentials}>Abort</button>
+          {searchResults && (
+            <div dangerouslySetInnerHTML={{ __html: searchResults }} />
+          )}
+        </>
+      )}
     </>
   );
 };

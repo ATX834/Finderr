@@ -6,6 +6,7 @@ const UserContextProvider = ({ children }) => {
   const [userHourlyRate, setUserHourlyRate] = useState();
   const [userCategories, setUserCategories] = useState();
   const [userCredentials, setUserCredentials] = useState(false);
+  const [searchResults, setSearchResults] = useState();
   
   return (
     <UserContext.Provider
@@ -14,10 +15,12 @@ const UserContextProvider = ({ children }) => {
         userHourlyRate,
         userCategories,
         userCredentials,
+        searchResults,
         setUserCategories,
         setUserHourlyRate,
         setUserLanguage,
-        setUserCredentials
+        setUserCredentials,
+        setSearchResults
       }}
     >
       {children}

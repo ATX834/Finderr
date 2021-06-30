@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useContext} from "react";
+import React, { useContext, useState} from "react";
 import UserContext from "../context/UserContext";
 
 export default (Users) => {
@@ -8,11 +8,16 @@ export default (Users) => {
     userHourlyRate,
     userCategories,
     userCredentials,
+    searchResults,
     setUserLanguage,
     setUserHourlyRate,
     setUserCategories,
-    setUserCredentials
+    setUserCredentials,
+    setSearchResults
   } = useContext(UserContext);
+
+  
+
   const handleClick = (setter) => {
     setter(null);
   };
@@ -21,9 +26,9 @@ export default (Users) => {
     setUserCredentials(true);
       axios
         .get(
-          `/api/user?language=${userLanguage}&hourlyRate=${userHourlyRate}&category=${userCategories}`
+          `/api/search?language=${userLanguage}&hourlyRate=${userHourlyRate}&category=${userCategories}`
         )
-        .then((r) => r.config.data);
+        .then((r) => setSearchResults(r.data));
   };
   return (
     <>
@@ -49,6 +54,7 @@ export default (Users) => {
         )}
       </ul>
       {userCategories && userHourlyRate && userLanguage && <button className="subsub" onClick={() => handleSubmit()}>submit</button>}
+
     </>
   );
 };
