@@ -66,9 +66,26 @@ class ApiController extends AbstractController
      */
     public function search(UserRepository $userRepository, PicturesGenerator $picturesGenerator ): Response
     {
-        $users = $userRepository->findAll();
+        if(!empty($_GET))
+        {
+            if($_GET['hourlyRate'] === 'less than 10$ per hour')
+            {
+                $_GET['min'] = 0;
+                $_GET['max'] = 10;
+            }
+            if($_GET['hourlyRate'] === 'less than 20$ per hour')
+            {
+                $_GET['min'] = 0;
+                $_GET['max'] = 20;
+            }
+            if($_GET['hourlyRate'] === 'more than 20$ per hour')
+            {
+                $_GET['min'] = 20;
+                $_GET['max'] = 1000;
+            }
+        }
         return $this->render('default/searchResults.html.twig', [
-            'users' => $users,
+            'users' => $userRepository->findThanksToSurvey($_GET),
             'pictures' => $picturesGenerator->generateRandomImg()
         ]);
     }

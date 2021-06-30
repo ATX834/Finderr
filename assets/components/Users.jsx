@@ -55,9 +55,6 @@ export default (Users) => {
       </ul>
       {userCategories && userHourlyRate && userLanguage && <button className="subsub" onClick={() => handleSubmit()}>submit</button>}
 
-      {searchResults && (
-        <div dangerouslySetInnerHTML={{ __html: searchResults }} />
-      )}
     </>
   );
 };
