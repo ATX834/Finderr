@@ -32,8 +32,16 @@ export default (Users) => {
   };
   return (
     <>
-      <h4>selection</h4>
-      <ul>
+     <div className="selec-container">
+      <h4>Your selection</h4>
+      <ul className="ul-selec">
+
+      {userCategories && (
+          <li>
+            Category selected : {userCategories}{" "}
+            <button className="lilcross" onClick={() => handleClick(setUserCategories)}>X</button>
+          </li>
+        )}
         {userLanguage && (
           <li>
             Language selected : {userLanguage}{" "}
@@ -46,15 +54,9 @@ export default (Users) => {
             <button className="lilcross" onClick={() => handleClick(setUserHourlyRate)}>X</button>
           </li>
         )}
-        {userCategories && (
-          <li>
-            Category selected : {userCategories}{" "}
-            <button className="lilcross" onClick={() => handleClick(setUserCategories)}>X</button>
-          </li>
-        )}
       </ul>
       {userCategories && userHourlyRate && userLanguage && <button className="subsub" onClick={() => handleSubmit()}>submit</button>}
-
+    </div>     
     </>
   );
 };

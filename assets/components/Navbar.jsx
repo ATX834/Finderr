@@ -6,15 +6,13 @@ export default function Navbar() {
   return (
     <nav>
       <div>
-        <ul>
+        <ul className="nav-container">
+         
           <li>
-            <Link to="/">Home</Link>
+           Select your criterias:
           </li>
           <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/categories">categories</Link>
+            <Link to="/categories">Categories</Link>
           </li>
           <li>
             <Link to="/languages">Languages</Link>
