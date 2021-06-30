@@ -52,7 +52,7 @@ const Finderr = () => {
           {searchResults && (
             <div dangerouslySetInnerHTML={{ __html: searchResults }} />
             )}
-            <button className='btn-danger' onClick={handleDestroyCredentials}>Back</button>
+            <button className='tarass' onClick={handleDestroyCredentials}>Back</button>
         </>
       )}
     </>
